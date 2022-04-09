@@ -1,13 +1,226 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --sky-blue: #b8edff;
+  --grass-green: #b2cb66;
+
+  --rainbow1: #fd0031;
+  --rainbow2: #008dc9;
+  --rainbow3: #c8b609;
+  --rainbow4: #5f368a;
+  --rainbow5: #ff5c2a;
+  --rainbow6: #ffb914;
+
+  --rainbow2dark: #0071a1;
+  --rainbow2light: #a6e2fc;
+
+  --text: white;
+  --text-dim: #bbb;
+
+  --font-size-h: 24pt;
+  --font-size-xxlarge: 20pt;
+  --font-size-xlarge: 16pt;
+  --font-size-large: 14pt;
+  --font-size-medium: 11pt;
+  --font-size-small: 8pt;
+
+  --font-family-regular: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
+  --font-family-themed: "Chango", cursive;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html,
+body,
+#root {
+  font-family: var(--font-family-regular);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--sky-blue);
+}
+
+* {
+  touch-action: manipulation;
+  font-family: sans-serif;
+  font-size: var(--font-size-large);
+}
+
+*:focus {
+  outline: none;
+}
+
+html,
+body,
+p,
+pre,
+h1,
+h2,
+h3,
+h4,
+h5,
+div,
+span,
+section,
+table,
+tr,
+td,
+th,
+strong,
+em {
+  user-select: none;
+}
+
+html,
+body,
+p,
+pre,
+h1,
+h2,
+h3,
+h4,
+h5,
+div,
+span,
+section,
+table,
+header,
+footer,
+button,
+article,
+a,
+tr,
+td,
+th,
+strong,
+em {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+div,
+section,
+header,
+article {
+  flex-direction: column;
+}
+
+header {
+  flex-direction: row;
+  padding: 1em;
+  align-items: center;
+  background: var(--rainbow2dark);
+}
+
+header .fancy-color-text {
+  flex: 1;
+  margin: 0 1em;
+}
+
+.icon {
+  width: 2em;
+  stroke: black;
+  stroke-width: 3px;
+  fill: transparent;
+}
+
+.icon-filled {
+  stroke: 0;
+  stroke-width: 0;
+  fill: black;
+}
+
+.rounded-blue-button {
+  border: 4px solid white;
+  box-shadow: 0px 8px 6px rgba(0, 0, 0, 0.3);
+  border-radius: 100em;
+  padding: 0.5em;
+  font-family: var(--font-family-themed);
+  color: white;
+  text-decoration: none;
+  font-size: var(--font-size-h);
+  background: linear-gradient(to bottom, var(--rainbow2), var(--rainbow2dark));
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.rounded-blue-button-active {
+  border: 4px solid var(--rainbow5);
+  background: var(--rainbow2dark);
+}
+
+button svg,
+.rounded-blue-button svg {
+  height: 2em;
+}
+
+header button  .icon,
+.rounded-blue-button .icon {
+  stroke: white;
+}
+header button  .icon-filled,
+.rounded-blue-button .icon-filled {
+  fill: white;
+}
+
+header a .icon-filled {
+  fill: white;
+}
+header .icon {
+  stroke: white;
+}
+
+/* PHONE */
+@media (max-width: 420px) {
+  :root {
+    --font-size-h: 16pt;
+    --font-size-xlarge: 12pt;
+    --font-size-large: 10pt;
+    --font-size-small: 7pt;
+  }
+}
+
+.popover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.popover-background {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.95);
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.popover-content {
+  width: 60%;
+  background: linear-gradient(to bottom, #fff, #f6f6f6);
+  border-radius: 1em;
+  border:4px solid var(--rainbow2);
+  padding: 2em;
+  color: black;
+  align-self: center;
+  margin: 1em;
+  z-index: 11;
+  box-shadow: 0px 8px 6px rgba(0, 0, 0, 0.3);
+}
+
+.popover header {
+  padding: 0;
+}
+.popover header h1 {
+  flex: 1;
+  text-align: center;
+  margin: 0 1em;
+  justify-content: center;
 }

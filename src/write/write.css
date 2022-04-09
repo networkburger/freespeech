@@ -1,0 +1,52 @@
+.app-write .txt-line {
+  background: white;
+  border: 3px solid #bbb;
+  border-radius: 1em;
+  margin: 0.25em 1em;
+  flex-direction: row;
+}
+
+.app-write .txt-line svg {
+  stroke: black;
+  stroke-width: 3px;
+  width: 2em;
+  margin: 0.5em;
+}
+
+.app-write .txt-line .svg-filled {
+  stroke: transparent;
+  stroke-width: 0;
+  fill: black;
+}
+
+.app-write .txt-line button {
+  background: transparent;
+  border: 0;
+  padding: 0 1em;
+}
+
+.app-write .txt-line input {
+  flex: 1;
+  font-size: var(--font-size-xlarge);
+  font-family: var(--font-family-themed);
+  border: 0;
+  margin: 0.25em;
+  color: #000;
+  width: 80%;
+}
+
+/* phone portrait */ 
+@media (max-width: 420px) {
+  .app-write .txt-line {
+    border: 0;
+    margin: 0;
+    margin-bottom: 0.25em;
+    border-radius: 0;
+  }
+  .txt-line input[type="text"] {
+    font-family: var(--font-family-regular);
+  }
+  .app-write .txt-line button {
+    padding: 0;
+  }
+}

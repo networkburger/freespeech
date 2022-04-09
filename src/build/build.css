@@ -1,0 +1,135 @@
+.app-build {
+  width: 100%;
+  height: 100%;
+}
+.app-build .sentance {
+  flex-direction: row;
+  padding: 1em;
+  background: var(--rainbow2);
+}
+
+.app-build .sentance svg {
+  fill: white;
+}
+
+.app-build .sentance .words {
+  flex: 1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-height: 200px;
+  overflow-y: scroll;
+  align-items: center;
+}
+
+.app-build .sentance .words .word {
+  margin: 0.1em;
+}
+
+.app-build .sentance .icon-button {
+  align-self: center;
+  margin: 1em;
+}
+
+.app-build .category-select {
+  padding: 1em;
+  flex-direction: row;
+  overflow-x: scroll;
+  background: var(--rainbow2dark);
+}
+
+.app-build .category-select button {
+  border: 0;
+  background: var(--rainbow2);
+  margin-right: 1em;
+  padding: 0.25em 1em;
+  border-radius: 0.5em;
+  color: white;
+}
+.app-build .category-select .selected {
+  background: var(--rainbow5);
+}
+
+.app-build .category-content {
+  padding: 1em;
+  background-color: var(--grass-green);
+  flex: 1;
+  overflow: scroll;
+}
+.app-build .category-content .catergory-words {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.app-build .category-content .word {
+  margin-right: 1em;
+  margin-bottom: 1em;
+}
+
+.app-build .word {
+  background: linear-gradient(to bottom, #fff, #e0e0e0);
+  border: 1px solid #e0e0e0;
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  color: black;
+}
+
+.app-build .category-content .word {
+  background: linear-gradient(to bottom, #fff, #e4e8d9);
+  border: 1px solid #6a7a39;
+}
+
+.app-build .sentance .word {
+  background: rgba(255,255,255,0.2);
+  border: 0;
+  color: white;
+  font-size: var(--font-size-xlarge);
+  padding: 0.2em 0.5em;
+}
+
+.app-build .popover-content span {
+  font-size: var(--font-size-small);
+}
+
+.app-build .add-word input {
+  border: 0;
+  background: transparent;
+  font-size: var(--font-size-large);
+}
+
+.icon-button {
+  border: 0;
+  background: transparent;
+}
+
+.delete-word {
+  align-items: center;
+}
+.delete-word p {
+  margin: 2em 0;
+  font-size: var(--font-size-h);
+}
+
+.add-row {
+  flex-direction: row;
+  align-items: center;
+}
+.add-row button {
+  margin-left: 1em;
+}
+.add-row input[type="text"] {
+  flex: 1;
+  border: 0;
+  font-size: var(--font-size-h);
+}
+
+.advanced {
+  flex-direction: row;
+  margin-top: 2em;
+}
+.advanced-col {
+  flex: 1;
+}
+
+.advanced .spacer {
+  width: 2em;
+}

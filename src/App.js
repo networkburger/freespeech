@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { WriteApp } from "./write/write";
+import { Home } from "./home/home";
+import { BuildApp } from "./build/build";
+import { ChooseApp } from "./choose/choose";
 
-function App() {
+import { currentLanguage, loc, setCurrentLanguage } from "./strings";
+import { useMemo, useState } from "react";
+
+export default function App() {
+  const [lang, setLang] = useState(currentLanguage());
+  const str = useMemo(() => loc(lang), [lang]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/write" element={<WriteApp str={str} />} />
+        <Route path="/build" element={<BuildApp str={str} />} />
+        <Route path="/choose" element={<ChooseApp str={str} />} />
+        <Route
+          path="/"
+          element={
+            <Home
+              str={str}
+              setCurrentLanguage={(newLang) => {
+                setCurrentLanguage(newLang);
+                setLang(newLang);
+              }}
+            />
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
-
-export default App;
