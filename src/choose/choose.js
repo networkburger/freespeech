@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./choose.css";
-import { Link } from "react-router-dom";
 import { FancyText } from "../fancy-text";
 import icon from "../svg-icons";
-import { speak } from "../strings";
+import { speak } from "../speak";
 
-export function ChooseApp({ str }) {
+export function ChooseApp() {
   useEffect(() => {
-    document.title = `${str.choose.title} - ${str.general.appTitle}`;
+    document.title = `CHOOSE - FREE SPEECH`;
   });
 
   const pages = [
@@ -56,10 +55,10 @@ export function ChooseApp({ str }) {
   return (
     <div className="app app-choose">
       <header>
-        <Link to="/" className="rounded-blue-button">
+        <a href="/index.html" className="rounded-blue-button">
           {icon.home}
-        </Link>
-        <FancyText text={str.choose.title} />
+        </a>
+        <FancyText text="CHOOSE" />
       </header>
 
       <div className="word-grid">
@@ -69,7 +68,7 @@ export function ChooseApp({ str }) {
               <div
                 key={wi}
                 className={`word-box`}
-                onMouseUp={() => speak(str, wordPronunciation(w))}
+                onMouseUp={() => speak(wordPronunciation(w))}
               >
                 <div className="card">
                   <span

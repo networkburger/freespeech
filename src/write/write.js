@@ -1,13 +1,12 @@
 import React, { useEffect, useReducer, useRef } from "react";
 import "./write.css";
-import { Link } from "react-router-dom";
 import { FancyText } from "../fancy-text";
 import icon from "../svg-icons";
-import { speak } from "../strings";
+import { speak } from "../speak";
 
-export function WriteApp({ str }) {
+export function WriteApp() {
   useEffect(() => {
-    document.title = `${str.write.title} - ${str.general.appTitle}`;
+    document.title = "WRITE - FREE SPEECH";
   });
 
   const [state, dispatch] = useReducer(reducer, pullFromStorage());
@@ -15,14 +14,14 @@ export function WriteApp({ str }) {
   return (
     <div className="app app-write">
       <header>
-        <Link to="/" className="rounded-blue-button">
+        <a href="/index.html" className="rounded-blue-button">
           {icon.home}
-        </Link>
-        <FancyText text={str.write.title} />
+        </a>
+        <FancyText text="WRITE" />
       </header>
 
       {state.map((t, i) => (
-        <TextLine key={i} text={t} index={i} lang={str} dispatch={dispatch} />
+        <TextLine key={i} text={t} index={i} dispatch={dispatch} />
       ))}
     </div>
   );
@@ -61,7 +60,7 @@ function reducer(state, action) {
   }
 }
 
-function TextLine({ lang, text, dispatch, index }) {
+function TextLine({ text, dispatch, index }) {
   const inputRef = useRef(null);
   useEffect(() => {
     if (index === 0) {
@@ -70,21 +69,6 @@ function TextLine({ lang, text, dispatch, index }) {
   }, [index]);
   return (
     <div className="txt-line">
-      <button
-        onMouseDown={(e) => {
-          e.preventDefault();
-          let t = text.toLowerCase();
-          if (t === alphabet(t.length)) {
-            t = t
-              .split("")
-              .map((x) => `${x}. `)
-              .join();
-          }
-          speak(lang, text.toLowerCase());
-        }}
-      >
-        {icon.play}
-      </button>
       <input
         type="text"
         ref={inputRef}
@@ -94,6 +78,22 @@ function TextLine({ lang, text, dispatch, index }) {
           dispatch({ type: "set-line", index, text: e.target.value })
         }
       ></input>
+      <button
+        disabled={text.length < 1}
+        onMouseDown={(e) => {
+          e.preventDefault();
+          let t = text.toLowerCase();
+          if (t === alphabet(t.length)) {
+            t = t
+              .split("")
+              .map((x) => `${x}. `)
+              .join();
+          }
+          speak(text.toLowerCase());
+        }}
+      >
+        {icon.play}
+      </button>
     </div>
   );
 }

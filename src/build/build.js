@@ -1,9 +1,8 @@
 import React, { useEffect, useReducer, useState } from "react";
-import { Link } from "react-router-dom";
 import { FancyText } from "../fancy-text";
 import useLongPress from "../longpress";
 import { Popover } from "../popover";
-import { speak } from "../strings";
+import { speak } from "../speak";
 import icon from "../svg-icons";
 import { baseCatalog } from "./base-catalog";
 import "./build.css";
@@ -76,12 +75,11 @@ function performAction(state, action) {
 }
 function reducer(state, action) {
   const newState = performAction(state, action);
-  console.log(action, state, newState);
   saveState(newState);
   return newState;
 }
 
-export function BuildApp({ str }) {
+export function BuildApp() {
   const [state, dispatch] = useReducer(reducer, loadState());
   const { sentance, category, catalog } = state;
 
@@ -89,16 +87,17 @@ export function BuildApp({ str }) {
   const [deleteWord, setDeleteWord] = useState(null);
 
   useEffect(() => {
-    document.title = `${str.build.title} - ${str.general.appTitle}`;
+    document.title = `BUILD - FREE SPEECH`;
   });
 
   return (
     <div className="app app-build">
       <header>
-        <Link to="/" className="rounded-blue-button">
+        <FancyText text="BUILD" />
+        <a href="/index.html" className="rounded-blue-button">
           {icon.home}
-        </Link>
-        <FancyText text={str.build.title} />
+        </a>
+        <span className="filler" />
         <button
           className="rounded-blue-button"
           onClick={() => setAddWord({ text: "", pronunciation: "", category })}
@@ -110,7 +109,7 @@ export function BuildApp({ str }) {
       <div className="sentance">
         <button
           className="icon-button"
-          onClick={() => say(str, sentance.map((s) => s.p || s.s).join(" "))}
+          onClick={() => say(sentance.map((s) => s.p || s.s).join(" "))}
         >
           {icon.play}
         </button>
@@ -119,7 +118,7 @@ export function BuildApp({ str }) {
             <Word
               key={si}
               word={s}
-              press={() => say(str, s)}
+              press={() => say(s)}
               longpress={() =>
                 dispatch({ type: "sentance/del-index", index: si })
               }
@@ -152,7 +151,7 @@ export function BuildApp({ str }) {
               word={w}
               longpress={() => setDeleteWord(w)}
               press={() => {
-                say(str, w);
+                say(w);
                 dispatch({ type: "sentance/add", word: w });
               }}
             />
@@ -162,65 +161,43 @@ export function BuildApp({ str }) {
 
       {addWord ? (
         <Popover contentClass="add-word" dismiss={() => setAddWord(null)}>
-          <div className="add-row">
-            <input
-              type="text"
-              autoCapitalize="off"
-              autoFocus={true}
-              placeholder={str.build.newWordPlaceholder}
-              value={addWord.text}
-              onChange={(e) => setAddWord({ ...addWord, text: e.target.value })}
-            />
-            <button
-              disabled={addWord.text.length < 1}
-              className="icon-button"
-              onClick={() =>
-                say(str, { s: addWord.text, p: addWord.pronunciation })
-              }
-            >
-              {icon.play}
-            </button>
-            <button
-              disabled={addWord.text.length < 1}
-              className="rounded-blue-button"
-              onClick={() => {
-                dispatch({
-                  type: "word/add",
-                  category: addWord.category,
-                  word: { s: addWord.text, p: addWord.pronunciation },
-                });
-                setAddWord(null);
-              }}
-            >
-              {icon.plus}
-            </button>
-          </div>
-
-          <div className="advanced">
-            <div className="advanced-col">
-              <span>{str.build.pronunciationPlaceholder}</span>
+          <div className="add-word-content">
+            <h2>Add New Word</h2>
+            <div className="add-row">
               <input
                 type="text"
                 autoCapitalize="off"
-                placeholder={str.build.pronunciationPlaceholder}
-                value={addWord.pronunciation}
+                autoFocus={true}
+                value={addWord.text}
                 onChange={(e) =>
-                  setAddWord({ ...addWord, pronunciation: e.target.value })
+                  setAddWord({ ...addWord, text: e.target.value })
                 }
               />
             </div>
-            <div className="spacer" />
-            <div className="advanced-col">
-              <span>{str.build.category}</span>
-              <input
-                type="text"
-                autoCapitalize="off"
-                placeholder={str.build.category}
-                value={addWord.category}
-                onChange={(e) =>
-                  setAddWord({ ...addWord, category: e.target.value })
+            <div className="confirm-row">
+              <button
+                disabled={addWord.text.length < 1}
+                className="rounded-blue-button"
+                onClick={() =>
+                  say({ s: addWord.text, p: addWord.pronunciation })
                 }
-              />
+              >
+                {icon.play}
+              </button>
+              <button
+                disabled={addWord.text.length < 1}
+                className="rounded-blue-button"
+                onClick={() => {
+                  dispatch({
+                    type: "word/add",
+                    category: addWord.category,
+                    word: { s: addWord.text, p: addWord.pronunciation },
+                  });
+                  setAddWord(null);
+                }}
+              >
+                OK
+              </button>
             </div>
           </div>
         </Popover>
@@ -228,7 +205,7 @@ export function BuildApp({ str }) {
 
       {deleteWord ? (
         <Popover contentClass="delete-word" dismiss={() => setDeleteWord(null)}>
-          <h1>{str.build.deleteWordTitle}</h1>
+          <h2>Delete Word</h2>
           <p>{`"${deleteWord.s}"`}</p>
           <button
             className="rounded-blue-button"
@@ -241,7 +218,7 @@ export function BuildApp({ str }) {
               setDeleteWord(null);
             }}
           >
-            {str.build.deleteButton}
+            DELETE
           </button>
         </Popover>
       ) : null}
@@ -249,9 +226,9 @@ export function BuildApp({ str }) {
   );
 }
 
-function say(lang, word) {
+function say(word) {
   const actual = word.p || word.s || word;
-  speak(lang, actual);
+  speak(actual);
 }
 
 function Word({ word, press, longpress }) {

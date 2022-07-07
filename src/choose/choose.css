@@ -10,7 +10,7 @@
   flex-direction: row;
 }
 .word-box {
-  flex:1;
+  flex: 1;
 }
 
 .word-box .card {
@@ -54,13 +54,13 @@
   font-size: var(--font-size-xxlarge);
 }
 
-/* ipad portrait */ 
+/* ipad portrait */
 @media (max-width: 770px) {
   .word-box .card {
     margin: 0.1em;
     border-radius: 0.5em;
     border: 1px solid white;
-    box-shadow: none;    
+    box-shadow: none;
   }
   .word-box .card span {
     font-size: var(--font-size-xlarge);

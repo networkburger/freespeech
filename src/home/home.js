@@ -1,15 +1,11 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import { FancyText } from "../fancy-text";
-import { Popover } from "../popover";
-import { isEnglish, languageStrings } from "../strings";
 import icons from "../svg-icons";
 import "./home.css";
 
-export function Home({ str, setCurrentLanguage }) {
-  const [chooseLang, setChooseLang] = useState(false);
+export function Home() {
   useEffect(() => {
-    document.title = str.general.appTitle;
+    document.title = "FREE SPEECH";
   });
 
   return (
@@ -17,42 +13,15 @@ export function Home({ str, setCurrentLanguage }) {
       <div className="pile">
         <div className="cloud">{icons.cloud}</div>
         <div className="pile-item menu-ui">
-          <FancyText text={str.general.appTitle} />
+          <FancyText text="FREE SPEECH" />
 
           <div className="app-list">
-            <Link to="/write">{str.write.title}</Link>
-            <Link to="/build">{str.build.title}</Link>
-            <Link to="/choose">{str.choose.title}</Link>
+            <a href="/index.html?app=write">WRITE</a>
+            <a href="/index.html?app=build">BUILD</a>
+            <a href="/index.html?app=choose">CHOOSE</a>
           </div>
-
-          <button onClick={() => setChooseLang(true)}>
-            {str.general.languageName}
-          </button>
         </div>
       </div>
-
-      {chooseLang ? (
-        <Popover
-          contentClass="choose-language"
-          dismiss={() => setChooseLang(null)}
-        >
-          <h1>
-            {str.general.language}
-            {isEnglish(str.langCode) ? "" : " / Language"}
-          </h1>
-          {Object.keys(languageStrings).map((k) => (
-            <button
-              key={k}
-              onClick={() => {
-                setChooseLang(false);
-                setCurrentLanguage(k);
-              }}
-            >
-              {languageStrings[k].general.languageName}
-            </button>
-          ))}
-        </Popover>
-      ) : null}
     </div>
   );
 }

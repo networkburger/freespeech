@@ -79,7 +79,7 @@
 }
 
 .app-build .sentance .word {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.2);
   border: 0;
   color: white;
   font-size: var(--font-size-xlarge);
@@ -94,6 +94,7 @@
   border: 0;
   background: transparent;
   font-size: var(--font-size-large);
+  min-width: 0;
 }
 
 .icon-button {
@@ -112,14 +113,31 @@
 .add-row {
   flex-direction: row;
   align-items: center;
+  margin: 2em 0;
 }
-.add-row button {
-  margin-left: 1em;
+.confirm-row {
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.confirm-row button {
+  margin: 0 1em;
 }
 .add-row input[type="text"] {
   flex: 1;
   border: 0;
   font-size: var(--font-size-h);
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+.add-word-content h2 {
+  text-align: center;
+  align-self: center;
+}
+.add-word-content h2,
+.add-row svg {
+  fill: #ffffffdd;
+  color: #ffffffdd;
 }
 
 .advanced {
@@ -132,4 +150,24 @@
 
 .advanced .spacer {
   width: 2em;
+}
+
+@media (max-width: 420px) {
+  .word-box {
+    width: 25%;
+  }
+
+  .popover-content {
+    width: 100vw;
+    border-radius: 0;
+    border: 0;
+    border-top: 2px solid var(--rainbow2);
+    border-bottom: 2px solid var(--rainbow2);
+    margin: 0;
+    margin-top: 1em;
+  }
+
+  .add-word-content {
+    margin: 1em;
+  }
 }

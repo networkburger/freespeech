@@ -1,22 +1,23 @@
+.app-write {
+  background: var(--rainbow2);
+}
+
 .app-write .txt-line {
-  background: white;
   border: 3px solid #bbb;
   border-radius: 1em;
   margin: 0.25em 1em;
   flex-direction: row;
+  background: var(--rainbow2dark);
 }
 
 .app-write .txt-line svg {
-  stroke: black;
-  stroke-width: 3px;
   width: 2em;
   margin: 0.5em;
+  fill: rgba(255, 255, 255, 0.9);
 }
 
-.app-write .txt-line .svg-filled {
-  stroke: transparent;
-  stroke-width: 0;
-  fill: black;
+.app-write .txt-line button:disabled svg {
+  fill: rgba(255, 255, 255, 0.5);
 }
 
 .app-write .txt-line button {
@@ -28,23 +29,28 @@
 .app-write .txt-line input {
   flex: 1;
   font-size: var(--font-size-xlarge);
+  background: var(--rainbow2dark);
   font-family: var(--font-family-themed);
   border: 0;
   margin: 0.25em;
-  color: #000;
+  color: #fff;
   width: 80%;
 }
 
-/* phone portrait */ 
+/* phone portrait */
 @media (max-width: 420px) {
   .app-write .txt-line {
+    background: var(--rainbow2);
     border: 0;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    padding: 8pt;
     margin: 0;
-    margin-bottom: 0.25em;
     border-radius: 0;
   }
   .txt-line input[type="text"] {
     font-family: var(--font-family-regular);
+    font-size: var(--font-size-xlarge);
+    background: var(--rainbow2);
   }
   .app-write .txt-line button {
     padding: 0;

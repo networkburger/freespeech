@@ -47,3 +47,13 @@
   font-size: var(--font-size-h);
   background: linear-gradient(to bottom, var(--rainbow2), var(--rainbow2dark));
 }
+
+.home .choose-language {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.home .choose-language button {
+  margin: 1em;
+  padding: 1em;
+}
