@@ -112,7 +112,7 @@ const icon = {
 const urlParams = new URLSearchParams(window.location.search);
 
 export function NedditApp() {
-  const sub = urlParams.get("r");
+  const sub = urlParams.get("r") ?? "popular";
   return (
     <div className="neddit">
       <SubHeader sub={sub} />
@@ -188,7 +188,9 @@ function SubHeader({ sub }) {
           <BestBar sub={sub} />
           <div className="preset-subs">
             {presets.map((p) => (
-              <button onClick={() => goToSub(p)}>{p}</button>
+              <button key={p} onClick={() => goToSub(p)}>
+                {p}
+              </button>
             ))}
           </div>
         </>

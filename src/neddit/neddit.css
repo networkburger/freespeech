@@ -49,10 +49,13 @@
   flex-direction: row;
 }
 
-.sub-header-controls input[type="text"] {
+.sub-header input[type="text"] {
   flex: 1;
   font-size: 16pt;
-  text-align: center;
+  text-align: left;
+  background-color: #888;
+  color: #fff;
+  margin-top: 1em;
 }
 
 .sub-header-controls .toggler {
@@ -61,6 +64,8 @@
 }
 .sub-header-controls .toggler span {
   margin: 0.5em;
+  text-transform: uppercase;
+  font-size: 10pt;
 }
 
 .subreddit {
