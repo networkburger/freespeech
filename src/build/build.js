@@ -1,4 +1,5 @@
 import React, { useEffect, useReducer, useState } from "react";
+import { Link } from "react-router-dom";
 import { FancyText } from "../fancy-text";
 import useLongPress from "../longpress";
 import { Popover } from "../popover";
@@ -94,9 +95,9 @@ export function BuildApp() {
     <div className="app app-build">
       <header>
         <FancyText text="BUILD" />
-        <a href="/index.html" className="rounded-blue-button">
+        <Link to="/" className="rounded-blue-button">
           {icon.home}
-        </a>
+        </Link>
         <span className="filler" />
         <button
           className="rounded-blue-button"

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { FancyText } from "../fancy-text";
+import { Link } from "react-router-dom";
 import icons from "../svg-icons";
 import "./home.css";
 
@@ -16,9 +17,9 @@ export function Home() {
           <FancyText text="FREE SPEECH" />
 
           <div className="app-list">
-            <a href="/index.html?app=write">WRITE</a>
-            <a href="/index.html?app=build">BUILD</a>
-            <a href="/index.html?app=choose">CHOOSE</a>
+            <Link to="/write">WRITE</Link>
+            <Link to="/build">BUILD</Link>
+            <Link to="/choose">CHOOSE</Link>
           </div>
         </div>
       </div>

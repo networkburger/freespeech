@@ -3,6 +3,7 @@ import "./write.css";
 import { FancyText } from "../fancy-text";
 import icon from "../svg-icons";
 import { speak } from "../speak";
+import { Link } from "react-router-dom";
 
 export function WriteApp() {
   useEffect(() => {
@@ -14,9 +15,9 @@ export function WriteApp() {
   return (
     <div className="app app-write">
       <header>
-        <a href="/index.html" className="rounded-blue-button">
+        <Link to="/" className="rounded-blue-button">
           {icon.home}
-        </a>
+        </Link>
         <FancyText text="WRITE" />
       </header>
 

@@ -1,0 +1,154 @@
+.neddit {
+  --grey1: #000;
+  --grey2: #222;
+  --grey3: #333;
+  --grey4: #666;
+  --grey5: #aaa;
+  --grey6: #c2c2c2;
+  --grey7: #e0e0e0;
+  --grey8: #fff;
+  --accent1: #729fe1;
+  --accent2: #a8b7cd;
+
+  flex: 1;
+  background: var(--grey1);
+  color: var(--grey7);
+}
+
+.neddit a {
+  color: var(--accent2);
+  text-decoration: none;
+}
+
+.neddit input[type="text"] {
+  background: var(--grey2);
+  border: 1px solid var(--grey4);
+  color: var(--grey7);
+}
+
+.neddit button {
+  background: var(--grey2);
+  border: 1px solid var(--grey4);
+  color: var(--grey7);
+}
+.neddit button span {
+  color: var(--grey7);
+}
+.neddit button svg {
+  fill: var(--grey7);
+  stroke: var(--grey7);
+  width: 1em;
+}
+
+.sub-header {
+  padding: 1em;
+  background: var(--grey3);
+}
+
+.sub-header-controls {
+  flex-direction: row;
+}
+
+.sub-header-controls input[type="text"] {
+  flex: 1;
+  font-size: 16pt;
+  text-align: center;
+}
+
+.sub-header-controls .toggler {
+  flex: 1;
+  justify-content: center;
+}
+.sub-header-controls .toggler span {
+  margin: 0.5em;
+}
+
+.subreddit {
+  border-top: 1px solid var(--grey4);
+  background: var(--grey2);
+}
+
+.bestbar {
+  background: var(--grey3);
+  flex-direction: row;
+  padding: 0.5em 0;
+}
+.bestbar button {
+  padding: 0.5em 1em;
+  font-size: 8pt;
+  flex: 1;
+  justify-content: center;
+}
+
+.post {
+  background: var(--grey3);
+  margin-bottom: 3em;
+}
+
+.post-synopsis {
+  flex-direction: row;
+  padding: 0.5em;
+}
+
+.post-synopsis h2 {
+  flex: 1;
+  word-wrap: break-word;
+  font-size: 16pt;
+  font-weight: normal;
+  margin: 0.25em;
+  color: var(--grey8);
+}
+
+.preview {
+  width: 5em;
+}
+
+.preview img,
+.post img,
+.post .gif,
+.post .gif iframe {
+  width: 100%;
+}
+
+.post-meta,
+.post-footer {
+  padding: 0.5em 1em;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.post-meta *,
+.post-footer * {
+  font-size: 8pt;
+}
+
+.post-meta a,
+.post-meta span,
+.post-footer a,
+.post-footer span {
+  margin-right: 1em;
+}
+
+.post-footer svg,
+.post-meta svg {
+  width: 1em;
+  fill: var(--grey5);
+}
+
+.post-nav {
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 1em;
+}
+.post-nav button {
+  padding: 0.5em 2em;
+}
+
+.preset-subs button {
+  padding: 0.5em;
+  margin-top: 0.5em;
+}
+
+.post-thumbnail svg {
+  fill: var(--grey4);
+}

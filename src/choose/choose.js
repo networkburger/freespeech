@@ -3,6 +3,7 @@ import "./choose.css";
 import { FancyText } from "../fancy-text";
 import icon from "../svg-icons";
 import { speak } from "../speak";
+import { Link } from "react-router-dom";
 
 export function ChooseApp() {
   useEffect(() => {
@@ -55,9 +56,9 @@ export function ChooseApp() {
   return (
     <div className="app app-choose">
       <header>
-        <a href="/index.html" className="rounded-blue-button">
+        <Link to="/" className="rounded-blue-button">
           {icon.home}
-        </a>
+        </Link>
         <FancyText text="CHOOSE" />
       </header>
 
