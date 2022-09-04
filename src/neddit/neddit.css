@@ -35,9 +35,13 @@
   color: var(--grey7);
 }
 .neddit button svg {
-  fill: var(--grey7);
-  stroke: var(--grey7);
   width: 1em;
+}
+.neddit svg {
+  stroke: var(--accent2);
+}
+.neddit .svg-filled {
+  fill: var(--accent2);
 }
 
 .sub-header {
@@ -137,7 +141,6 @@
 .post-footer svg,
 .post-meta svg {
   width: 1em;
-  fill: var(--grey5);
 }
 
 .post-nav {
@@ -152,8 +155,4 @@
 .preset-subs button {
   padding: 0.5em;
   margin-top: 0.5em;
-}
-
-.post-thumbnail svg {
-  fill: var(--grey4);
 }
